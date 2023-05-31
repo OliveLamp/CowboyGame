@@ -5,7 +5,7 @@ import java.util.TimerTask;
 import java.awt.*;
 import javax.swing.*;
 
-public class Game {
+public class Game extends JPanel {
 	private  TimerTask run;
     private Timer timer;
    // private Player p = Player.getInstance();
@@ -17,7 +17,7 @@ public class Game {
     }
     public static void clear(Graphics g){
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, Constants.scrnWidth, Constants.scrnHeight);
+        g.fillRect(0, 0, 500, 500);
         
     }
     public static void render(Graphics g){
@@ -29,7 +29,6 @@ public class Game {
 
             @Override
             public void run() {
-                test[0].y+=5;
                 repaint();
             }
             
@@ -43,7 +42,7 @@ public class Game {
 
     public static void main(String[] args) {
         JFrame f = new JFrame("game", null);
-        f.setBounds(0,0,Constants.scrnWidth,Constants.scrnHeight);
+        f.setBounds(0,0,500,500);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
         Game v = new Game();
