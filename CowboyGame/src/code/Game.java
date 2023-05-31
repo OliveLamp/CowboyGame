@@ -11,12 +11,11 @@ public class Game extends JPanel {
    // private Player p = Player.getInstance();
     //kill me 3.0
     public void paint(Graphics g){
-        
-        clear(g);
-        render(g);
+    	clear(g);
+    	render(g);
     }
     public static void clear(Graphics g){
-        g.setColor(Color.BLACK);
+        g.setColor(Color.blue);
         g.fillRect(0, 0, 500, 500);
         
     }
@@ -29,7 +28,8 @@ public class Game extends JPanel {
 
             @Override
             public void run() {
-                repaint();
+            	//System.out.print("coconut.jpg");
+            	repaint();
             }
             
         };
