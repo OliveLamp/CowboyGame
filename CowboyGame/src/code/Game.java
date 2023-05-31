@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Game extends JPanel {
 	private  TimerTask run;
     private Timer timer;
-   // private Player p = Player.getInstance();
+    private Player p = Player.getInstance();
     //kill me 3.0
     public void paint(Graphics g){
     	clear(g);
