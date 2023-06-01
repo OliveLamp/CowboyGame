@@ -13,6 +13,8 @@ public class Game extends JFrame implements KeyListener{
     private Timer timer;
     private static Player p = Player.getInstance();
     private static GameObj box = new GameObj(50,50);
+    private static Toolkit t=Toolkit.getDefaultToolkit();
+    private static Image pSprite;
     //kill me 3.0
     public void paint(Graphics g){
     	clear(g);
@@ -23,10 +25,11 @@ public class Game extends JFrame implements KeyListener{
         g.fillRect(0, 0, 500, 500);
         
     }
-    public static void render(Graphics g){
+    public void render(Graphics g){
     	g.setColor(Color.white);
-        g.fillRect(p.getX(), p.getY(), 50, 50);
+        //g.fillRect(p.getX(), p.getY(), 50, 50);
         g.fillRect(box.getX(), box.getY(), 50, 50);
+        g.drawImage(pSprite, p.getX(), p.getY(), this);
     }
     public Game(){
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,6 +38,7 @@ public class Game extends JFrame implements KeyListener{
     	setBounds(0,0,500,500);
     	addKeyListener(this);
     	setResizable(false);
+    	pSprite = t.getImage("/player.png");
         run = new TimerTask() {
 
             @Override
@@ -60,15 +64,7 @@ public class Game extends JFrame implements KeyListener{
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_W) {
-			p.setY(p.getY()-5);
-		}else if(e.getKeyCode() == KeyEvent.VK_S) {
-			p.setY(p.getY()+5);
-		}else if(e.getKeyCode() == KeyEvent.VK_A) {
-			p.setX(p.getX()-5);
-		}else if(e.getKeyCode() == KeyEvent.VK_D) {
-			p.setX(p.getX()+5);
-		}
+		p.update(e);
 		
 	}
 	@Override

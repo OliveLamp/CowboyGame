@@ -1,6 +1,7 @@
 package code;
 
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 
 public class GameObj {
 	private int x;
@@ -29,6 +30,5 @@ public class GameObj {
 	public Rectangle getHitBox() {
 		return this.hitbox;
 	}
-	
 	
 }
