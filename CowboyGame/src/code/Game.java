@@ -15,7 +15,7 @@ public class Game extends JPanel {
     	render(g);
     }
     public static void clear(Graphics g){
-        g.setColor(Color.blue);
+        g.setColor(Color.black);
         g.fillRect(0, 0, 500, 500);
         
     }
@@ -42,10 +42,12 @@ public class Game extends JPanel {
 
     public static void main(String[] args) {
         JFrame f = new JFrame("game", null);
-        f.setBounds(0,0,500,500);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
         Game v = new Game();
         f.add(v);
+        f.pack();
+        f.setVisible(true);
+        f.setBounds(0,0,500,500);
+        
     }
 }
