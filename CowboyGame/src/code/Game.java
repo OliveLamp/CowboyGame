@@ -11,26 +11,12 @@ import javax.swing.*;
 public class Game extends JFrame implements KeyListener{
 	private  TimerTask run;
     private Timer timer;
-    private static Player p = Player.getInstance();
-    private static GameObj box = new GameObj(50,50);
+    
     private static Toolkit t=Toolkit.getDefaultToolkit();
-    private static Image pSprite;
+    private static GamePanel g = new GamePanel();
     //kill me 3.0
-    public void paintComponent(Graphics g){
-    	clear(g);
-    	render(g);
-    }
-    public static void clear(Graphics g){
-        g.setColor(Color.black);
-        g.fillRect(0, 0, 500, 500);
-        
-    }
-    public void render(Graphics g){
-    	g.setColor(Color.white);
-        g.fillRect(p.getX(), p.getY(), 50, 50);
-        g.fillRect(box.getX(), box.getY(), 50, 50);
-        g.drawImage(pSprite, p.getX(), p.getY(), this);
-    }
+    
+   
     public Game(){
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	pack();
@@ -38,15 +24,19 @@ public class Game extends JFrame implements KeyListener{
     	setBounds(0,0,500,500);
     	addKeyListener(this);
     	setResizable(false);
-    	pSprite = t.getImage("/player.png");
+    	add(g);
+    	
         run = new TimerTask() {
 
             @Override
             public void run() {
             	//System.out.print("coconut.jpg");
-            	repaint();
-            	if(box.getHitBox().intersects(p.getHitBox())) {
-            		System.out.println("penis");
+            	g.repaint();
+            	for(int i = 0; i<g.levelData.size(); i++) {
+            		if(g.p.getHitBox().intersects(g.levelData.get(i).getHitBox())) {
+            			g.p.setX((-1*g.p.getSpeedX())+g.p.getX());
+            			g.p.setY((-1*g.p.getSpeedY())+g.p.getY());
+            		}
             	}
             }
             
@@ -64,12 +54,17 @@ public class Game extends JFrame implements KeyListener{
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		p.update(e);
+		g.p.update(e);
 		
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		p.setSpeedX(0);
-		p.setSpeedY(0);
+		if(e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_S) {
+			g.p.setSpeedY(0);
+		}
+		if(e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_D) {
+			g.p.setSpeedX(0);
+		}
+		
 	}
 }
