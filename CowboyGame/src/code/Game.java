@@ -30,6 +30,9 @@ public class Game extends JFrame implements KeyListener{
 
             @Override
             public void run() {
+            	g.mX = MouseInfo.getPointerInfo().getLocation().x;
+            	g.mY = MouseInfo.getPointerInfo().getLocation().y;
+            	System.out.println(g.mX+","+g.mY);
             	//System.out.print("coconut.jpg");
             	g.repaint();
             	for(int i = 0; i<g.levelData.size(); i++) {
@@ -67,4 +70,5 @@ public class Game extends JFrame implements KeyListener{
 		}
 		
 	}
+	
 }
