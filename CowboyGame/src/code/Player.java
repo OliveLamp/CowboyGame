@@ -18,13 +18,15 @@ public class Player extends GameObj{
 	
 	public void update(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_W) {
-			setY(getY()-5);
+			setSpeedY(getSpeedY()-1);
 		}else if(e.getKeyCode() == KeyEvent.VK_S) {
-			setY(getY()+5);
+			setSpeedY(getSpeedY()+1);
 		}else if(e.getKeyCode() == KeyEvent.VK_A) {
-			setX(getX()-5);
+			setSpeedX(getSpeedX()-1);
 		}else if(e.getKeyCode() == KeyEvent.VK_D) {
-			setX(getX()+5);
+			setSpeedX(getSpeedY()+1);
 		}
+		setX(getX()+getSpeedX());
+		setY(getY()+getSpeedY());
 	}
 }

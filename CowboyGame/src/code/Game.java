@@ -16,7 +16,7 @@ public class Game extends JFrame implements KeyListener{
     private static Toolkit t=Toolkit.getDefaultToolkit();
     private static Image pSprite;
     //kill me 3.0
-    public void paint(Graphics g){
+    public void paintComponent(Graphics g){
     	clear(g);
     	render(g);
     }
@@ -27,7 +27,7 @@ public class Game extends JFrame implements KeyListener{
     }
     public void render(Graphics g){
     	g.setColor(Color.white);
-        //g.fillRect(p.getX(), p.getY(), 50, 50);
+        g.fillRect(p.getX(), p.getY(), 50, 50);
         g.fillRect(box.getX(), box.getY(), 50, 50);
         g.drawImage(pSprite, p.getX(), p.getY(), this);
     }
@@ -52,7 +52,7 @@ public class Game extends JFrame implements KeyListener{
             
         };
         timer = new Timer();
-        timer.scheduleAtFixedRate(run, 10, 100);
+        timer.scheduleAtFixedRate(run, 0, 17);
        
         
     }
@@ -69,7 +69,7 @@ public class Game extends JFrame implements KeyListener{
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
-		
+		p.setSpeedX(0);
+		p.setSpeedY(0);
 	}
 }
